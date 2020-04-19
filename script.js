@@ -30,17 +30,42 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   var passwordString = "";
+  var passwordLength = parseInt(prompt("Choose length of password between 8 and 128 characters"));
   var useLowercase = confirm("Include lowercase characters in password?");
   var useUppercase = confirm("Include uppercase characters in password?");
   var useNumeric = confirm("Include numbers in password?");
   var useSpecial = confirm("Include special characters in password?");
 
-  if (useLowercase === false && useUppercase === false && useNumeric === false && useSpecial === false) {
-    alert("Please select at least one type of character");
-    generatePassword();
+  if (passwordLength < 8 || passwordLength > 128 || typeof(passwordLength) !== "number" || passwordLength === NaN || passwordLength === null) {
+    alert("Please submit a number between 8 and 128");
+    return location.reload;
   }
+
+  else if (useLowercase === false && useUppercase === false && useNumeric === false && useSpecial === false) {
+    alert("Please select at least one type of character");
+    return location.reload;
+  }
+  
   else {
-    //generate password
+    if (useLowercase === true) {
+      caseArray.push(lowercaseChoices);
+    }
+    if (useUppercase === true) {
+      caseArray.push(uppercaseChoices);
+    }
+    if (useNumeric === true) {
+      caseArray.push(numericChoices);
+    }
+    if (useSpecial === true) {
+      caseArray.push(specialChoices);
+    }
+
+    for(var i=0; i<passwordLength; i++) {
+      var password = 
+      var randomArrayChoice = [lowercaseChoices, uppercaseChoices, numericChoices, specialChoices];
+
+    }
+    
   }
   
 }
